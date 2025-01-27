@@ -4,7 +4,7 @@ set(ARCH armv7l)
 set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_PROCESSOR armv7l)
 
-set(triple arm-none-linux-gnueabihf)
+set(triple arm-linux-gnueabihf)
 
 set_property(GLOBAL PROPERTY host arm-linux)
 set_property(GLOBAL PROPERTY triple ${triple})
