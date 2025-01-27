@@ -5,9 +5,8 @@ Documentation can be viewed at https://www.kipr.org/doc/index.html or by clickin
 
 # Dependencies
 
-- swig
 - doxygen
-- arm-none-linux-gnueabihf
+- arm-none-linux-gnueabihf-toolchain-bin (on arch)
 - cmake
 - make
 
@@ -43,14 +42,20 @@ Each of the following options may be specified when executing CMake by prefixing
 # Cross-compiling to aarch64-linux-gnu (e.g., Wombat)
 
 ```bash
-apt install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
-cd libkipr
+sudo pacman -S doxygen make cmake
+yay -S arm-none-linux-gnueabihf-toolchain-bin
+
+git clone git@github.com:f2pay/libwallaby.git
+cd libwallaby
 cmake -Bbuild -DCMAKE_TOOLCHAIN_FILE=$(pwd)/toolchain/arm-linux-gnueabihf.cmake .
+
+cd build
+make
 ```
 
 # License
 
-libkipr is licensed under the terms of the [GPLv3 License](LICENSE).
+libwallaby is licensed under the terms of the [GPLv3 License](LICENSE).
 
 # Contributing
 
