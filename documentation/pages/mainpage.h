@@ -19,7 +19,6 @@
  *   - `with_battery` (default: `ON`) - Build battery support.
  *   - `with_compass` (default: `ON`) - Build compass support.
  *   - `with_console` (default: `ON`) - Build console support.
- *   - `with_create` (default: `ON`) - Build iRobot Create 2 support.
  *   - `with_digital` (default: `ON`) - Build digital sensor support.
  *   - `with_gyro` (default: `ON`) - Build gyroscope support.
  *   - `with_magneto` (default: `ON`) - Build magnetometer support.
