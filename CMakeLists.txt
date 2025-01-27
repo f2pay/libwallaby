@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.13)
 
 project(libkipr)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 option(package_debian "Build a Debian package" OFF)
 
 set(KIPR_VERSION_MAJOR 1)
@@ -72,7 +74,6 @@ file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/empty.cpp "")
 
 # add bindings, which require the compiled objects
 set_property(GLOBAL PROPERTY kipr_module_objects ${KIPR_MODULE_OBJECTS})
-add_subdirectory(binding)
 
 if(EMSCRIPTEN)
   if (wasm)

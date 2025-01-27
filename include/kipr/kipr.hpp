@@ -19,16 +19,8 @@
 #include "kipr/battery/battery.hpp"
 #endif
 
-#ifdef KIPR_MODULE_BOTBALL
-#include "kipr/botball/botball.h"
-#endif
-
 #ifdef KIPR_MODULE_BUTTON
 #include "kipr/button/button.hpp"
-#endif
-
-#ifdef KIPR_MODULE_CAMERA
-#include "kipr/camera/camera.hpp"
 #endif
 
 #ifdef KIPR_MODULE_COMPASS
@@ -47,12 +39,6 @@
 
 #ifdef KIPR_MODULE_DIGITAL
 #include "kipr/digital/digital.hpp"
-#endif
-
-#ifdef KIPR_MODULE_GRAPHICS
-#include "kipr/graphics/graphics.h"
-#include "kipr/graphics/graphics_characters.h"
-#include "kipr/graphics/graphics_key_code.h"
 #endif
 
 #ifdef KIPR_MODULE_GYRO

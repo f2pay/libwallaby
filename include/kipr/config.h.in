@@ -13,9 +13,7 @@
 #cmakedefine KIPR_MODULE_ANALOG
 #cmakedefine KIPR_MODULE_AUDIO
 #cmakedefine KIPR_MODULE_BATTERY
-#cmakedefine KIPR_MODULE_BOTBALL
 #cmakedefine KIPR_MODULE_BUTTON
-#cmakedefine KIPR_MODULE_CAMERA
 #cmakedefine KIPR_MODULE_COLOR
 #cmakedefine KIPR_MODULE_COMPASS
 #cmakedefine KIPR_MODULE_COMPAT
@@ -25,14 +23,12 @@
 #cmakedefine KIPR_MODULE_CREATE
 #cmakedefine KIPR_MODULE_DIGITAL
 #cmakedefine KIPR_MODULE_GEOMETRY
-#cmakedefine KIPR_MODULE_GRAPHICS
 #cmakedefine KIPR_MODULE_GYRO
 #cmakedefine KIPR_MODULE_MAGNETO
 #cmakedefine KIPR_MODULE_MOTOR
 #cmakedefine KIPR_MODULE_NETWORK
 #cmakedefine KIPR_MODULE_SENSOR
 #cmakedefine KIPR_MODULE_SERVO
-#cmakedefine KIPR_MODULE_TELLO
 #cmakedefine KIPR_MODULE_THREAD
 #cmakedefine KIPR_MODULE_TIME
 #cmakedefine KIPR_MODULE_WAIT_FOR
