@@ -1,24 +1,45 @@
-FROM debian:stable-slim
+FROM debian:bookworm AS ftplibbuild
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    apt-utils \
-    make \
-    cmake \
-    gcc-arm-linux-gnueabihf \
-    g++-arm-linux-gnueabihf \
-    doxygen \
-    && rm -rf /var/lib/apt/lists/*
+ARG VERSION
+ENV LIB_VERSION=${VERSION}
 
-RUN useradd -m -u 1000 -U -s /bin/bash kipr
-WORKDIR /home/kipr
+LABEL authors="Team Free2Pay <jakob.kampichler+ftplib@robo4you.at>"
 
-USER kipr
-COPY . .
+# prepare OS
+RUN export DEBIAN_FRONTEND=noninteractive
+## Base Packages
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y git cmake make gcc curl wget build-essential ca-certificates
+## Dependencies
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y swig python3 python3-dev x11proto-dev libx11-dev
 
-RUN cmake -Bbuild -DCMAKE_TOOLCHAIN_FILE=$(pwd)/toolchain/arm-linux-gnueabihf.cmake . 
 
-WORKDIR /home/kipr/build
+# Compile libwallaby
 
+## libwallaby (see https://github.com/kipr/libwallaby)
+WORKDIR /opt/libwallaby
+RUN git clone https://github.com/f2pay/libwallaby .
+
+## Prepare Build Dir
+WORKDIR /opt/libwallaby/build
+### do it
+RUN cmake -Wno-dev -Dwith_documentation=OFF -Dwith_tests=OFF ..
+RUN make -j4
+
+# output build results
 RUN make package
 
-ENTRYPOINT [ "/usr/bin/cat", "/home/kipr/build/*-Linux.deb" ]
+# clean image
+RUN apt-get autoremove -y && apt-get autoclean -y
+
+
+# create output script
+# copies ftplib build/ to $1
+RUN <<EOF cat >> /opt/out.sh
+#!/bin/bash
+cp -r /opt/libwallaby/build/. \$1/.
+EOF
+RUN chmod +x /opt/out.sh
+
+
+ENTRYPOINT ["/opt/out.sh"]
