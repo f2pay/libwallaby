@@ -5,7 +5,7 @@ set -euo pipefail
 VER=$(git rev-parse --short HEAD)
 echo "Building libwallaby_compiler:$VER"
 
-sudo docker buildx build --load --platform=linux/arm64 \
+sudo docker buildx build --load \
   --build-arg VERSION=$VER \
   -t libwallaby_compiler:$VER \
   .
