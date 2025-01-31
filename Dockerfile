@@ -10,7 +10,7 @@ RUN export DEBIAN_FRONTEND=noninteractive
 RUN dpkg --add-architecture arm64
 ## Base Packages
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y git cmake make gcc curl wget build-essential ca-certificates gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+    DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y git cmake make gcc curl wget build-essential ca-certificates gcc-aarch64-linux-gnu g++-aarch64-linux-gnu file
 ## Dependencies
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y swig python3 python3-dev x11proto-dev libx11-dev libx11-dev:arm64 libzbar-dev:arm64 libopencv-dev:arm64 libjpeg-dev:arm64 
 
