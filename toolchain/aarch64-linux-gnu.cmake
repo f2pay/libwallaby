@@ -12,8 +12,6 @@ set_property(GLOBAL PROPERTY arch aarch64)
 set_property(GLOBAL PROPERTY target_os linux)
 set_property(GLOBAL PROPERTY cross_prefix ${triple}-)
 
-set(CMAKE_C_COMPILER_TARGET ${triple})
-
 set(CMAKE_C_COMPILER ${triple}-gcc)
 set(CMAKE_C_COMPILER_TARGET ${triple})
 set(CMAKE_CXX_COMPILER ${triple}-g++)
